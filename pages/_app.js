@@ -1,7 +1,21 @@
-import '../styles/globals.css'
+import React from "react";
+import Head from "next/head";
+import { AppProvider } from "../configApp/AppProvider";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <React.Fragment>
+      <Head>
+        <title>ProgressNet</title>
+      </Head>
+
+      <AppProvider>
+        <Component {...pageProps} />
+      </AppProvider>
+    </React.Fragment>
+  );
 }
 
-export default MyApp
+export default MyApp;

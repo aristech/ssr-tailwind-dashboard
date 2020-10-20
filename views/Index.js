@@ -1,11 +1,11 @@
 /*eslint-disable*/
 import React from "react";
-import Link from "next/link";
-import PageWrapper from "../configApp/PageWrapper";
-import IndexNavbar from "../components/Navbars/IndexNavbar.js";
-import Footer from "../components/Footers/Footer.js";
+import { Link } from "react-router-dom";
 
-function Index() {
+import IndexNavbar from "components/Navbars/IndexNavbar.js";
+import Footer from "components/Footers/Footer.js";
+
+export default function Index() {
   return (
     <>
       <IndexNavbar fixed />
@@ -82,7 +82,7 @@ function Index() {
               <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-blue-600">
                 <img
                   alt="..."
-                  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auhref=format&fit=crop&w=700&q=80"
+                  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80"
                   className="w-full align-middle rounded-t-lg"
                 />
                 <blockquote className="relative p-8 mb-4">
@@ -513,7 +513,7 @@ function Index() {
                   <h5 className="text-xl font-semibold pb-4 text-center">
                     Login Page
                   </h5>
-                  <Link href="/auth/login">
+                  <Link to="/auth/login">
                     <div className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150">
                       <img
                         alt="..."
@@ -528,7 +528,7 @@ function Index() {
                   <h5 className="text-xl font-semibold pb-4 text-center">
                     Profile Page
                   </h5>
-                  <Link href="/profile">
+                  <Link to="/profile">
                     <div className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150">
                       <img
                         alt="..."
@@ -543,7 +543,7 @@ function Index() {
                   <h5 className="text-xl font-semibold pb-4 text-center">
                     Landing Page
                   </h5>
-                  <Link href="/landing">
+                  <Link to="/landing">
                     <div className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150">
                       <img
                         alt="..."
@@ -665,4 +665,3 @@ function Index() {
     </>
   );
 }
-export default PageWrapper(Index);
