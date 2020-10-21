@@ -1,15 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 // components
 
-import Navbar from "components/Navbars/AuthNavbar.js";
-import Footer from "components/Footers/Footer.js";
+import Navbar from "../components/Navbars/AuthNavbar.js";
+import Footer from "../components/Footers/Footer.js";
 
 export default function Landing() {
   return (
     <>
-      <Navbar transparent />
       <main>
         <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div
@@ -129,8 +128,10 @@ export default function Landing() {
                   good to go. Just make sure you enable them first via
                   JavaScript.
                 </p>
-                <Link to="/" className="font-bold text-gray-800 mt-8">
-                  Check Notus React!
+                <Link href="/">
+                  <a className="font-bold text-gray-800 mt-8">
+                    Check Notus React!
+                  </a>
                 </Link>
               </div>
 
@@ -558,7 +559,6 @@ export default function Landing() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   );
 }

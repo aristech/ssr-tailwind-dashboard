@@ -10,66 +10,20 @@ import Dashboard from "../../views/admin/Dashboard";
 import Setttings from "../../views/admin/Settings";
 import Tables from "../../views/admin/Tables";
 import Maps from "../../views/admin/Maps";
-// import Clients from "../views/clients/Clients";
-// import CreateClient from "../views/clients/CreateClient";
-// import EditClient from "../views/clients/EditClient";
-// import ClientFiles from "../views/clients/ClientFiles";
-// import Managers from "../views/managers/Managers";
-// import CreateManagers from "../views/managers/CreateManagers";
-// import Devices from "../views/devices/Devices";
-// import CreateDevices from "../views/devices/CreateDevices";
-// import Damages from "../views/damages/Damages";
-// import CreateDamages from "../views/damages/CreateDamages";
-// import DamageTypes from "../views/damages/DamageTypes";
-// import Users from "../views/users/Users";
-// import CreateUsers from "../views/users/CreateUsers";
-// import EditUser from "../views/users/EditUser";
-// import CreateNotes from "../views/notes/CreateNotes";
-// import Services from "../views/services/Services";
-// import CreateServices from "../views/services/CreateServices";
-// import Settings from "../views/settings/Settings";
-
-// import Menu from "../views/Menu";
-// import EditPos from "../views/EditPos";
+import Calendar from "../../views/admin/Calendar/Calendar";
 
 function Admin({ slug }) {
   // const [loading, setLoading] = useState(false);
 
   const components = {
     dashboard: Dashboard,
+    calendar: Calendar,
     settings: Setttings,
     tables: Tables,
     maps: Maps,
-    // calendar: Calendar,
-    // clients: Clients,
-    // createClient: CreateClient,
-    // editClient: EditClient,
-    // clientFiles: ClientFiles,
-    // managers: Managers,
-    // createManagers: CreateManagers,
-    // devices: Devices,
-    // createDevices: CreateDevices,
-    // damages: Damages,
-    // createDamages: CreateDamages,
-    // damagetypes: DamageTypes,
-    // users: Users,
-    // createUsers: CreateUsers,
-    // editUser: EditUser,
-    // createNotes: CreateNotes,
-    // services: Services,
-    // createServices: CreateServices,
-    // settings: Settings,
-
-    // menumanagement: Menu,
-    // editPos: EditPos
   };
-  // console.log(props);
 
   const Tagname = components[slug];
-
-  //   if (!myToken) {
-  //     return <Error statusCode={404} />;
-  //   }
 
   if (!slug) {
     return (
@@ -90,7 +44,7 @@ function Admin({ slug }) {
 
   const isSlug = Object.keys(components).includes(slug);
   if (!isSlug) return <Error statusCode={404} />;
-  console.log(slug);
+
   return (
     <>
       <Sidebar slug={slug} routes={routes} />

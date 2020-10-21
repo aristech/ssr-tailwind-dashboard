@@ -23,7 +23,7 @@ const PageWrapper = (Comp) =>
     static async getInitialProps(args) {
       const { slug, apiRoute } = args.query;
       // const token = nextCookie(args).token;
-      console.log("slug", slug);
+
       return {
         slug,
         apiRoute,
@@ -33,7 +33,6 @@ const PageWrapper = (Comp) =>
     }
 
     render() {
-      console;
       return (
         <AppProvider slug={this.props.slug} token={this.props.token}>
           <Consumer>

@@ -6,6 +6,12 @@ const routes = [
     layout: "/admin",
   },
   {
+    path: "/calendar",
+    name: "Calendar",
+    icon: "fas fa-calendar",
+    layout: "/admin",
+  },
+  {
     path: "/settings",
     name: "Settings",
     icon: "fas fa-tools",

@@ -7,6 +7,10 @@ fontFamily["sans"] = [
   // <-- you may provide more font fallbacks here
 ];
 module.exports = {
+  future: {
+    removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
+  },
   purge: [],
   theme: {
     fontFamily,

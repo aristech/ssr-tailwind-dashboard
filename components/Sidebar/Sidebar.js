@@ -6,7 +6,6 @@ import NotificationDropdown from "../Dropdowns/NotificationDropdown.js";
 import UserDropdown from "../Dropdowns/UserDropdown.js";
 
 export default function Sidebar({ slug, routes }) {
-  console.log(slug);
   const [collapseShow, setCollapseShow] = React.useState("hidden");
 
   const adminMenuItems = routes
@@ -52,11 +51,10 @@ export default function Sidebar({ slug, routes }) {
             <i className="fas fa-bars"></i>
           </button>
           {/* Brand */}
-          <Link
-            className="md:block text-left md:pb-2 text-gray-700 mr-0 inline-block whitespace-no-wrap text-sm uppercase font-bold p-4 px-0"
-            href="/"
-          >
-            Progressnet SSR Dashboard
+          <Link href="/">
+            <a className="md:block text-left md:pb-2 text-gray-700 mr-0 inline-block whitespace-no-wrap text-sm uppercase font-bold p-4 px-0">
+              Progressnet SSR Dashboard
+            </a>
           </Link>
           {/* User */}
           <ul className="md:hidden items-center flex flex-wrap list-none">
@@ -78,11 +76,10 @@ export default function Sidebar({ slug, routes }) {
             <div className="md:min-w-full md:hidden block pb-4 mb-4 border-b border-solid border-gray-300">
               <div className="flex flex-wrap">
                 <div className="w-6/12">
-                  <Link
-                    className="md:block text-left md:pb-2 text-gray-700 mr-0 inline-block whitespace-no-wrap text-sm uppercase font-bold p-4 px-0"
-                    href="/"
-                  >
-                    Progressnet SSR Dashboard
+                  <Link href="/">
+                    <a className="md:block text-left md:pb-2 text-gray-700 mr-0 inline-block whitespace-no-wrap text-sm uppercase font-bold p-4 px-0">
+                      Progressnet SSR Dashboard
+                    </a>
                   </Link>
                 </div>
                 <div className="w-6/12 flex justify-end">
@@ -122,9 +119,9 @@ export default function Sidebar({ slug, routes }) {
             {/* Divider */}
             <hr className="my-4 md:min-w-full" />
             {/* Heading */}
-            <h6 className="md:min-w-full text-gray-600 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+            {/* <h6 className="md:min-w-full text-gray-600 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
               Auth Layout Pages
-            </h6>
+            </h6> */}
             {/* Navigation */}
 
             {/* <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
@@ -150,11 +147,11 @@ export default function Sidebar({ slug, routes }) {
             </ul> */}
 
             {/* Divider */}
-            <hr className="my-4 md:min-w-full" />
+            {/* <hr className="my-4 md:min-w-full" /> */}
             {/* Heading */}
-            <h6 className="md:min-w-full text-gray-600 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+            {/* <h6 className="md:min-w-full text-gray-600 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
               No Layout Pages
-            </h6>
+            </h6> */}
             {/* Navigation */}
 
             {/* <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">

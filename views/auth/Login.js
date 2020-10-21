@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 export default function Login() {
   return (
@@ -19,22 +19,14 @@ export default function Login() {
                     className="bg-white active:bg-gray-100 text-gray-800 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
                     type="button"
                   >
-                    <img
-                      alt="..."
-                      className="w-5 mr-1"
-                      src="/img/github.svg")}
-                    />
+                    <img alt="..." className="w-5 mr-1" src="/img/github.svg" />
                     Github
                   </button>
                   <button
                     className="bg-white active:bg-gray-100 text-gray-800 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
                     type="button"
                   >
-                    <img
-                      alt="..."
-                      className="w-5 mr-1"
-                      src="/img/google.svg")}
-                    />
+                    <img alt="..." className="w-5 mr-1" src="/img/google.svg" />
                     Google
                   </button>
                 </div>
@@ -107,8 +99,10 @@ export default function Login() {
                 </a>
               </div>
               <div className="w-1/2 text-right">
-                <Link to="/auth/register" className="text-gray-300">
-                  <small>Create new account</small>
+                <Link href="/auth/register">
+                  <a className="text-gray-300">
+                    <small>Create new account</small>
+                  </a>
                 </Link>
               </div>
             </div>
