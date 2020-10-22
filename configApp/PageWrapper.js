@@ -31,10 +31,9 @@ const PageWrapper = (Comp) =>
         ...(Comp.getInitialProps ? await Comp.getInitialProps(args) : null),
       };
     }
-
     render() {
       return (
-        <AppProvider slug={this.props.slug} token={this.props.token}>
+        <AppProvider slug={this.props.slug}>
           <Consumer>
             {(context) => {
               return (

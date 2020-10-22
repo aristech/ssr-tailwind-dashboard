@@ -99,3 +99,16 @@
     transform: rotate(360deg);
   }
 }
+
+/* CALENDAR */
+.fc-toolbar-title {
+  color: #3182ce;
+}
+,
+a.fc-col-header-cell-cushion: {
+  color: #3182ce;
+}
+
+.fc .fc-daygrid-day-number: {
+  color: #3182ce !important;
+}

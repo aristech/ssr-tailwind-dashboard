@@ -43,22 +43,22 @@ const PagesDropdown = () => {
         >
           Admin Layout
         </span>
-        <Link href="/admin/dashboard">
+        <Link href="/admin?slug=dashboard">
           <a className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800">
             Dashboard
           </a>
         </Link>
-        <Link href="/admin/settings">
+        <Link href="/admin?slug=settings">
           <a className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800">
             Settings
           </a>
         </Link>
-        <Link href="/admin/tables">
+        <Link href="/admin?slug=tables">
           <a className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800">
             Tables
           </a>
         </Link>
-        <Link href="/admin/maps">
+        <Link href="/admin?slug=maps">
           <a className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800">
             Maps
           </a>
@@ -71,12 +71,12 @@ const PagesDropdown = () => {
         >
           Auth Layout
         </span>
-        <Link href="/auth/login">
+        <Link href="/auth?slug=login">
           <a className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800">
             Login
           </a>
         </Link>
-        <Link href="/auth/register">
+        <Link href="/auth?slug=register">
           <a className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800">
             Register
           </a>

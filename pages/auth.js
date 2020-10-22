@@ -1,10 +1,10 @@
 import React from "react";
 import Error from "next/error";
-import PageWrapper from "../../configApp/PageWrapper.js";
-import Login from "../../views/auth/Login";
-import Register from "../../views/auth/Register";
-import FooterSmall from "../../components/Footers/FooterSmall";
-import Navbar from "../../components/Navbars/AuthNavbar";
+import PageWrapper from "../configApp/PageWrapper.js";
+import Login from "../views/auth/Login";
+import Register from "../views/auth/Register";
+import FooterSmall from "../components/Footers/FooterSmall";
+import Navbar from "../components/Navbars/AuthNavbar";
 
 function Auth({ slug }) {
   // const [loading, setLoading] = useState(false);

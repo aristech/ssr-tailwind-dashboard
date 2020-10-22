@@ -17,7 +17,7 @@ export default function Sidebar({ slug, routes }) {
 
       return (
         <li key={i} className="items-center">
-          <Link href={`${actualPage}/${sl}`} as={`${actualPage}/${sl}`}>
+          <Link href={`${actualPage}?slug=${sl}`} as={`${actualPage}/${sl}`}>
             <a
               className={
                 "text-xs uppercase py-3 font-bold block " +

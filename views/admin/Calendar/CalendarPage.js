@@ -28,7 +28,6 @@ function CalendarPage(props) {
           right: "dayGridMonth,dayGridWeek,timeGrid",
         }}
         locale={elLocale}
-        defaultView="timeGridWeek"
         selectable={true}
         height="auto"
         editable={true}

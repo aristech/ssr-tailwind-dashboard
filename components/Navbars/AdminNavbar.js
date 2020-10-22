@@ -26,7 +26,7 @@ export default function Navbar({ slug }) {
               </span>
               <input
                 type="text"
-                placeholder="Search here..."
+                placeholder={`Search in ${slug} ...`}
                 className="px-3 py-3 placeholder-gray-400 text-gray-700 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full pl-10"
               />
             </div>
