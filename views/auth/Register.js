@@ -1,6 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
+import Router from "next/router";
+import api from "../../configApp/api";
 
 export default function Register() {
+  const [registerData, setRegisterData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const [agree, setAgree] = useState(false);
+
+  const handleFieldsChange = (name, val) => {
+    setRegisterData({
+      ...registerData,
+      [name]: val.target.value,
+    });
+  };
+
+  const handleRegister = async () => {
+    try {
+      await fetch(`${api.url}users`, {
+        method: "Post",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ...registerData }),
+      })
+        .then((response) =>
+          response
+            .json()
+            .then((res) => ({ status: response.status, body: res }))
+        )
+        .then((myJson) => {
+          console.log(myJson);
+          if (myJson.status === 200) {
+            // Router.push("/auth/login");
+          }
+        });
+    } catch (error) {
+      console.log("register", error);
+    }
+  };
+
   return (
     <>
       <div className="container mx-auto px-4 h-full">
@@ -47,6 +89,8 @@ export default function Register() {
                       type="email"
                       className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
                       placeholder="Name"
+                      value={registerData.name}
+                      onChange={(val) => handleFieldsChange("name", val)}
                     />
                   </div>
 
@@ -61,6 +105,8 @@ export default function Register() {
                       type="email"
                       className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
                       placeholder="Email"
+                      value={registerData.email}
+                      onChange={(val) => handleFieldsChange("email", val)}
                     />
                   </div>
 
@@ -75,6 +121,10 @@ export default function Register() {
                       type="password"
                       className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
                       placeholder="Password"
+                      name="password"
+                      autoComplete="on"
+                      value={registerData.password}
+                      onChange={(val) => handleFieldsChange("password", val)}
                     />
                   </div>
 
@@ -83,6 +133,8 @@ export default function Register() {
                       <input
                         id="customCheckLogin"
                         type="checkbox"
+                        checked={agree}
+                        onChange={() => setAgree(!agree)}
                         className="form-checkbox text-gray-800 ml-1 w-5 h-5 ease-linear transition-all duration-150"
                       />
                       <span className="ml-2 text-sm font-semibold text-gray-700">
@@ -102,6 +154,8 @@ export default function Register() {
                     <button
                       className="bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                       type="button"
+                      onClick={() => handleRegister()}
+                      disabled={!agree}
                     >
                       Create Account
                     </button>

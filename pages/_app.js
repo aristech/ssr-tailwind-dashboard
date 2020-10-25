@@ -1,3 +1,4 @@
+import "regenerator-runtime/runtime";
 import React from "react";
 import Head from "next/head";
 import { AppProvider } from "../configApp/AppProvider";

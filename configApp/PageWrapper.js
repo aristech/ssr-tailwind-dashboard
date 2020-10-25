@@ -5,6 +5,7 @@ import Router from "next/router";
 import AppHead from "../components/AppHead";
 
 import Consumer, { AppProvider } from "./AppProvider";
+import Alert from "../components/alerts/Alert";
 // import routes from "./routes";
 
 Router.onRouteChangeStart = () => {
@@ -38,15 +39,9 @@ const PageWrapper = (Comp) =>
             {(context) => {
               return (
                 <div>
-                  <AppHead msg={context.msg} />
-
-                  <Comp
-                    {...this.props}
-                    selected={context?.selected}
-                    notifications={context?.notifications}
-                    user={context?.user}
-                    alert={context?.alert}
-                  />
+                  <Alert />
+                  <AppHead />
+                  <Comp {...this.props} />
                 </div>
               );
             }}

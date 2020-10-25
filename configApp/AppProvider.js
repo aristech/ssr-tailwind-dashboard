@@ -2,14 +2,28 @@ import React, { createContext, useState, useEffect } from "react";
 
 import Router from "next/router";
 
-import { Config } from "./config";
+import { api } from "./api";
+import { getApi, postApi } from "./functions";
 
 const { Provider, Consumer } = createContext();
 // Then create a provider Component
 function AppProvider(props) {
   const slug = props.slug;
+  const [showAlert, setShowAlert] = useState(false);
+  const [alert, setAlert] = useState("hello");
 
-  return <Provider value={{}}>{props.children}</Provider>;
+  return (
+    <Provider
+      value={{
+        showAlert,
+        setShowAlert,
+        setAlert,
+        alert,
+      }}
+    >
+      {props.children}
+    </Provider>
+  );
 }
 AppProvider.getInitialProps = async (args) => {
   const { slug } = args.query;
