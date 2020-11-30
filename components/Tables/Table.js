@@ -30,7 +30,7 @@ function DefaultColumnFilter({
 
 function fuzzyTextFilterFn(rows, id, filterValue) {
   return matchSorter(rows, filterValue, {
-    keys: [(row) => row.values[id]?.title],
+    keys: [(row) => row.values?.title],
   });
 }
 
@@ -46,7 +46,7 @@ export default function Table({ color, columns, data }) {
       // "startWith"
       text: (rows, id, filterValue) => {
         return rows.filter((row) => {
-          const rowValue = row.values[id]?.title;
+          const rowValue = row.values?.title;
           return rowValue !== undefined
             ? String(rowValue)
                 .toLowerCase()
@@ -203,7 +203,8 @@ export default function Table({ color, columns, data }) {
                       {...cell.getCellProps()}
                       className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 justify-center"
                     >
-                      {renderValue(value)}
+                      {/* {renderValue(value)} */}
+                      {cell.render("Cell")}
                     </td>
                   );
                 })}

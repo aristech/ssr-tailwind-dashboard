@@ -1,10 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
 
-import Router from "next/router";
-
-import { api } from "./api";
-import { getApi, postApi } from "./functions";
-
 const { Provider, Consumer } = createContext();
 // Then create a provider Component
 function AppProvider(props) {

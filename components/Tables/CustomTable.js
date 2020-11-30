@@ -1,146 +1,98 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useTable } from "react-table";
+import { gql, useQuery, useLazyQuery, useMutation } from "@apollo/client";
 
 // components
 
 import TableDropdown from "../Dropdowns/TableDropdown.js";
 import Table from "./Table.js";
 
-export default function CustomTable({ color }) {
-  function NumberRangeColumnFilter({
-    column: { filterValue = [], preFilteredRows, setFilter, id },
-  }) {
-    const [min, max] = React.useMemo(() => {
-      let min = preFilteredRows.length ? preFilteredRows[0].values[id] : 0;
-      let max = preFilteredRows.length ? preFilteredRows[0].values[id] : 0;
-      preFilteredRows.forEach((row) => {
-        min = Math.min(row.values[id], min);
-        max = Math.max(row.values[id], max);
-      });
-      return [min, max];
-    }, [id, preFilteredRows]);
-
-    return (
-      <div
-        style={{
-          display: "flex",
-        }}
-      >
-        <input
-          value={filterValue[0] || ""}
-          type="number"
-          onChange={(e) => {
-            const val = e.target.value;
-            setFilter((old = []) => [
-              val ? parseInt(val, 10) : undefined,
-              old[1],
-            ]);
-          }}
-          placeholder={`Min (${min})`}
-          style={{
-            width: "70px",
-            marginRight: "0.5rem",
-          }}
-        />
-        to
-        <input
-          value={filterValue[1] || ""}
-          type="number"
-          onChange={(e) => {
-            const val = e.target.value;
-            setFilter((old = []) => [
-              old[0],
-              val ? parseInt(val, 10) : undefined,
-            ]);
-          }}
-          placeholder={`Max (${max})`}
-          style={{
-            width: "70px",
-            marginLeft: "0.5rem",
-          }}
-        />
-      </div>
-    );
+const ALL_POSTS_QUERY = gql`
+  query posts {
+    allPosts {
+      id
+      title
+      description
+    }
   }
+`;
+
+const ADD_LIST_MUTATION = gql`
+  mutation createPost(
+    $title: String
+    $description: String
+    $published: Boolean
+    $slug: String
+  ) {
+    createPost(
+      data: {
+        title: $title
+        description: $description
+        published: $published
+        slug: $slug
+      }
+    ) {
+      title
+      description
+      published
+      slug
+    }
+  }
+`;
+
+export default function CustomTable({ color }) {
+  const { loading, error, data } = useQuery(ALL_POSTS_QUERY);
+  const [
+    addList,
+    { data: dataList, error: errorList, loading: loadingList },
+  ] = useMutation(ADD_LIST_MUTATION);
+
+  const addNewList = () => {
+    addList({
+      variables: {
+        title: "gerti6",
+        description: "test3@test.gr",
+        published: true,
+        slug: "grt3",
+      },
+      refetchQueries: ["posts"],
+      // update: (cache, { data: uData }) => {
+      //   console.log("data", uData);
+      //   const cacheId = cache.identify(uData.createPost);
+      //   cache.modify({
+      //     fields: {
+      //       data: (existingFieldData, { toReference }) => {
+      //         console.log("existingFieldData", toReference);
+      //         return [...existingFieldData, toReference[cacheId]];
+      //       },
+      //     },
+      //   });
+      // },
+    });
+  };
+
   //DATA
+  // console.log(errorList);
   const columns = React.useMemo(
     () => [
       {
-        Header: "Project",
-        accessor: "project",
+        Header: "ID",
+        accessor: "id",
+      },
+      {
+        Header: "Title",
+        accessor: "title",
         filter: "fuzzyText",
       },
       {
-        Header: "Budget",
-        accessor: "budget",
-        filter: "fuzzyText",
-      },
-      {
-        Header: "Status",
-        accessor: "status",
-        filter: "fuzzyText",
-      },
-      {
-        Header: "Users",
-        accessor: "users",
-        filter: "fuzzyText",
-      },
-      {
-        Header: "Completition",
-        accessor: "completition",
+        Header: "Description",
+        accessor: "description",
         filter: "fuzzyText",
       },
     ],
     []
   );
-
-  const data = [
-    {
-      project: {
-        title: "Argon Design System",
-        value: "Argon Design System",
-        type: "string",
-        editable: true,
-      },
-      budget: { title: "2,500", value: 2500, type: "number", editable: true },
-      status: {
-        title: "Pending",
-        value: null,
-        type: "boolean",
-        editable: true,
-      },
-      users: { title: "Makis", value: "Makis", type: "string", editable: true },
-      completition: {
-        title: "60",
-        value: 60,
-        type: "percentage",
-        editable: true,
-      },
-    },
-    {
-      project: {
-        title: "material Design System",
-        value: "material Design System",
-        type: "string",
-        editable: true,
-      },
-      budget: { title: "4,500", value: 4500, type: "number", editable: true },
-      status: {
-        title: "Active",
-        value: true,
-        type: "boolean",
-        editable: true,
-      },
-      users: { title: "Grt", value: "Grt", type: "string", editable: true },
-      completition: {
-        title: "30",
-        value: 30,
-        type: "percentage",
-        editable: true,
-      },
-    },
-  ];
+  console.log("alldata", data);
 
   return (
     <>
@@ -152,7 +104,19 @@ export default function CustomTable({ color }) {
       >
         <div className="block w-full overflow-x-auto">
           {/* Projects table */}
-          <Table color="light" columns={columns} data={data} />
+          {loadingList && (
+            <div
+              className={
+                "text-white px-6 py-4 border-0 rounded relative mb-4 bg-blue-500"
+              }
+            >
+              Loading data ...
+            </div>
+          )}
+          {data && (
+            <Table color="light" columns={columns} data={data?.allPosts} />
+          )}
+          <button onClick={addNewList}>Add Todo</button>
         </div>
       </div>
     </>

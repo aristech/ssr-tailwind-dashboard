@@ -2,10 +2,13 @@ import React from "react";
 
 // components
 
+import { ALL_POSTS_QUERY } from "../../components/queries/PostQuery";
 import CardTable from "../../components/Cards/CardTable.js";
 import CustomTable from "../../components/Tables/CustomTable.js";
+import { initializeApollo } from "../../configApp/apolloClient";
 
-export default function Tables() {
+function Tables(props) {
+  console.log(props);
   return (
     <>
       <div className="flex flex-wrap mt-4">
@@ -22,3 +25,20 @@ export default function Tables() {
     </>
   );
 }
+
+export async function getStaticProps() {
+  const apolloClient = initializeApollo();
+
+  await apolloClient.query({
+    query: ALL_POSTS_QUERY,
+  });
+
+  return {
+    props: {
+      initialApolloState: apolloClient.cache.extract(),
+    },
+    revalidate: 1,
+  };
+}
+
+export default Tables;

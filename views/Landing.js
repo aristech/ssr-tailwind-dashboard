@@ -169,7 +169,7 @@ export default function Landing() {
           </div>
         </section>
 
-        <section className="relative py-20">
+        <section className="dark:bg-black relative py-20">
           <div
             className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
             style={{ transform: "translateZ(0)" }}
